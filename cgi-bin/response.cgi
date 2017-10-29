@@ -44,7 +44,7 @@ with open('json/sample.json', 'w') as f:
 with open('apikey.json', 'r') as f:
     api_data = json.load(f)
 library_api = LibraryAPI()
-data = library_api.get(api_data, float(latitude), float(longtitude), isbnList[0], 1)
+data = library_api.get(api_data, float(latitude), float(longtitude), isbnList[0], 5)
 
 with open('json/sample2.json', 'w') as f:
     f.write(json.dumps(data, ensure_ascii=False, indent=4))
