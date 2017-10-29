@@ -1,0 +1,143 @@
+html.index {
+    height: 100%;
+    position: relative;
+}
+
+body {
+    width: 100%;
+
+    background-color: #000000;
+
+    font-family:'游ゴシック体', 'Yu Gothic', 'YuGothic', 'Lucida Grande',
+    'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif;
+    color: #ffffff;
+    font-size: 13px;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ベージごとの設定を追加 */
+body.index {
+    height: 100%;
+    background: url(../imgs/books-bg/books1.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #000000;
+}
+
+body.sample1, body.sample2 {
+    height: 100%;
+    background: url(../imgs/books-bg/books2.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #000000;
+}
+
+/***** Paragraph & Typographic *****/
+.wide {
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.centered {
+    text-align: center;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
+
+h1 {
+    font-family: 'Amatic SC', 'Rock Salt', 'Kozuka Gothic Pro', 'Lato', sans-serif;
+    font-size: 40px;
+}
+
+.pic {
+    width: 100%;
+    height: auto;
+}
+
+
+/***** Links *****/
+
+a {
+    color: #f85c37;
+    word-wrap: break-word;
+}
+
+a:hover,
+a:focus {
+    color: #7b7b7b;
+}
+
+
+/***** navbar *****/
+
+.navbar {
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #000000;
+}
+
+.navbar .container {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar li a {
+    height: 50px;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    color: #1abc9c;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background: #555555;
+}
+
+
+/****** wrapper ******/
+
+#wrapper {
+    min-height: 100%;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+
+/****** container ******/
+
+.container .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.bg-navy {
+    background-color: rgba(45,63,80,0.8);
+}
+.bg-pink {
+    background-color: rgba(256,168,168,0.8);
+    color: #000000;
+}
+.bg-gray {
+    background-color: rgba(196,196,196,0.8);
+    color: #2c3e50;
+}
+.bg-shade{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/****** footer ******/
+
+#f{
+    height: 20px;
+    background-color: #000000;
+}
