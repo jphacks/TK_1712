@@ -1,6 +1,6 @@
 # Look Book
 
-[![Product Name](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://www.youtube.com/channel/UC4PtjOfZTbVp9DwtJv82Lzg)
+[![Look Book](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://www.youtube.com/channel/UC4PtjOfZTbVp9DwtJv82Lzg)
 
 ## 製品概要
 本の内容から関連する書籍を探し推薦するWEBアプリケーション
@@ -27,16 +27,16 @@
 最終的に関連本に対して、Yahoo shoppingのサイトとその本を借りることができる、現在地から割り出された近くの図書館が表示されます。
 
 具体的には、
-![Product Name](FirstPage.png)
+![Look Book](FirstPage.png)
 このページで画像をアップロードすると...
-![Product Name](SecondImage.png)
+![Look Book](SecondImage.png)
 このように
-![Product Name](ThirdImage.png)
+![Look Book](ThirdImage.png)
 オススメの書籍が表示されます。
 
 モバイル版も対応しています。
-![Product Name](First-mobile.png)
-![Product Name](Second-mobile.png)
+![Look Book](First-mobile.jpg)
+![Look Book](SecondImage-mo.jpg)
 
 
 ### 特長
