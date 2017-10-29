@@ -31,3 +31,15 @@ def make_keywords(sentence):
         data.extend(list(keyword.keys()))
 
     return data    
+
+def yapiGetKey(str):
+    with open('apikey.json', 'r') as f:
+        api_data = json.load(f)
+    url = 'https://jlp.yahooapis.jp/KeyphraseService/V1/extract'
+    appid = api_data['yahoo_api_key']
+
+    params = {'appid': appid, 'sentence': str, 'output': 'json' }
+    data = requests.get(url, params=params).json()
+
+    return list(data.keys())
+
