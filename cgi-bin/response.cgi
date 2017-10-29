@@ -7,6 +7,7 @@ sys.path.append('LibraryAPIUtil')
 from getIsbnAndInfo import GetIsbn
 from getIsbnAndInfo import searchBook
 from library_api_util import LibraryAPI
+import os.path
 
 cgitb.enable()
 
@@ -15,15 +16,20 @@ text = form.getfirst("text")
 filepath = form.getfirst("filepath")
 latitude = form.getfirst("latitude")
 longtitude = form.getfirst("lontitude")
+filename = form.getfirst("filename")
 if (latitude is None):
     latitude = 35.7
 if (longtitude is None):
     longtitude = 139.8
+if (filename is None):
+    filename = "Python_ai.jpg"
 print(latitude)
 print(longtitude)
 sequence_list = []
 
-keywords = ["harry", "potter"]
+name, ext = os.path.splitext(filename)
+keywords = name.split('_')
+
 #keywords = getkeywords.make_keywords_from_photo()
 
 with open('json/keywords.json', 'w') as f:
@@ -33,8 +39,8 @@ isbn = GetIsbn()
 shoopingInfo = searchBook()
 
 isbnList = isbn.useGoogleApi(keywords)
-if (len(isbnList) <= 0):
-    isbnList = ['4577002086'] + isbnList
+# if (len(isbnList) <= 0):
+#     isbnList = ['4577002086'] + isbnList
 data = shoopingInfo.yapiKeywords(keywords)
 print(isbnList)
 

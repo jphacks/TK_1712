@@ -46,7 +46,7 @@
         <div class="container wide">
             <div class="col-sm-12 centered">
                 <p>
-                    <h1><b><font size=20><i class="fa fa-hand-o-right"></i> Books Recommendation</font></b></h1><br><br>
+                    <h1><b><font size=20><i class="fa fa-hand-o-right"></i>Look Book </font></b></h1><br><br>
                 </p>
                 <p>
                     JPHACKS 2017 tk_1712<br>
@@ -56,7 +56,7 @@
                 </p><br>
             </div>
             <div class="col-sm-12 centered">
-              <form id="form" enctype="multipart/form-data">
+              <form id="form" enctype="multipart/form-data" method="GET">
                 <div class="input-group">
                   <label class="input-group-btn">
                     <span class="btn btn-primary">
@@ -119,9 +119,17 @@
                           data: {"text": reader.result,
                                  "filepath" : "upload.png",
                                  "latitude" : latitude,
-                                 "longtitude" : longtitude},
+                                 "longtitude" : longtitude,
+                                 "filename" : file.name},
                         })
                         .done(function(response) {
+                            const d1 = new Date();
+                            while (true) {
+                                const d2 = new Date();
+                                if (d2 - d1 > 10000) {
+                                break;
+                                }
+                            }
                             $('#result').html(response);
                             window.location.href = 'sample2.html';
                         })
@@ -143,6 +151,13 @@
                                  "longtitude" : longtitude},
                         })
                         .done(function(response) {
+                            const d1 = new Date();
+                            while (true) {
+                                const d2 = new Date();
+                                if (d2 - d1 > 1000) {
+                                break;
+                                }
+                            }
                             $('#result').html(response);
                             window.location.href = 'sample2.html';
                         })
