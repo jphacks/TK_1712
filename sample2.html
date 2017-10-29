@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html class="index" lang="ja">
+<meta name="description" content="jphacks2017 tk_1712">
+
+<head>
+    <meta charset="utf-8">
+    <title>jphacks2017 tk_1712</title>
+
+    <!-- CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt|Amatic+SC:400,700|Mountains+of+Christmas:700,400' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="sample2">
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">TOP</a></li>
+                    <li><a href="sample1.html">1</a></li>
+                    <li class="active"><a href="sample2.html">2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper" class="bg-shade">
+        <div class="container left wide">
+            <div class="row">
+                <div class="box box-6 top">
+                    <p>
+                        <h1><font size=20><b>Recommended</b></font></h1><br>
+                    </p>
+                    <p><h1>
+                        <font  size=10>KEYWORDS</font><br>
+                        <div ><font  size=7 id="keyword_1"></font></div>
+                        <div ><font  size=7 id="keyword_2"></font></div>
+                    </h1></p>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div id="test" class="container bg-gray centered wide">
+            変更前
+        </div>
+        <script type="text/javascript">
+            $(function(){
+
+                $.getJSON("json/keywords.json", function(result) {
+                    $('#keyword_1').html(result[0]);
+                    $('#keyword_2').html(result[1]);
+                });
+                $.getJSON("json/sample.json",function(result1){
+                    $.getJSON("json/sample2.json",function(result2){
+                        var test = document.getElementById("test");
+                        var h = '<div class="panel-group" id="accordion"> <div class="row centered">  <br><br>';
+                        for(var i in result1) {
+                            var k = parseInt(i) + parseInt(1);
+                            h += '<div class="row centered">'
+                                + '<div class="col-sm-3 left"><p>'
+                                + '<a>'
+                                + '<img border="1" class="img-thumbnail" width="250" height="250"  src="'
+                                + result1[i].Image
+                                + '" alt="pic1"></a>'
+                                + '</p></div>'
+                                + '<div class="col-sm-5 left">'
+                                + ' <p class="text-muted">'
+                                + '<h4><b><a href="'
+                                + result1[i].Url
+                                + '" class="text-muted"><font color="#434A54"><i class="fa fa-link">'
+                                + result1[i].Name//.replace(sample_list[i].Name.substr(sample_list[i].Name.indexOf("【"),sample_list[i].Name.indexOf("】") + 1),'')
+                                + '</i></font></a>'
+                                + '</b></h4>'
+                                + '</p><p><h2><font color="#434A54">    ￥'
+                                + result1[i].Price._value
+                                + ' (yahooショッピング)<br>'
+                                +'</h2></font><h3><a class="text-info"code href="http://calil.jp/library/'
+                                + result2[i].libid//result2[0].reserveurl
+                                + '/'
+                                + result2[i].formal
+                                +'"><font color="#434A54"><i class="fa fa-link">'
+                                + result2[i].formal
+                                +'で貸出中</i></font></a></h3></p>'
+                                + ' </div> '
+                                +'<div class="col-sm-4 left"><p>'
+                                + '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse'
+                                + k
+                                + '">⬇︎概要</a></h4></div><div id="collapse'
+                                + k
+                                + '" class="panel-collapse collapse"><div class="panel-body">'   
+                                + result1[i].Description//result1[i].systemname
+                                + '</div></div></div>'
+                                + '</p></div></div>'
+                                + '<br><hr noshade color="#000000"><br>';
+                        }
+                        h = h.slice(0,-34);
+                        h += '<br><br></div></div></div></div>';
+                        test.innerHTML = h;
+                    });
+                });
+                //h -= '<br><hr noshade color="#000000"><br>';
+
+            });
+          </script>
+
+    <div id="f">
+        <div class="centered">
+            <c>&copy;2017 jphacks2017 tk_1712. All Rights Reserved.</c>
+        </div>
+    </div>
+</body>
+</html>

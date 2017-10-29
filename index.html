@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!DOCTYPE HTML>
+  <html class="index" lang="ja">
+<meta name="description" content="jphacks2017 tk_1712">
+
+<head>
+  <meta charset="utf-8">
+  <title>jphacks2017 tk_1712</title>
+
+  <!-- CSS -->
+  <link href="assets/css/bootstrap.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Rock+Salt|Amatic+SC:400,700|Mountains+of+Christmas:700,400' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="index">
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><i class="fa fa-book" aria-hidden="true"></i></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="index.html">TOP</a></li>
+                    <li><a href="sample1.html">1</a></li>
+                    <li><a href="sample2.html">2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper" class="bg-shade">
+        <div class="container wide">
+            <div class="col-sm-12 centered">
+                <p>
+                    <h1><b><font size=20><i class="fa fa-hand-o-right"></i> Books Recommendation</font></b></h1><br><br>
+                </p>
+                <p>
+                    JPHACKS 2017 tk_1712<br>
+                    <br>
+                    文章入りの画像をアップロードしてください。<br>
+                    関連書籍等の推薦をします。<br>
+                </p><br>
+            </div>
+            <div class="col-sm-12 centered">
+              <form id="form" enctype="multipart/form-data">
+                <div class="input-group">
+                  <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                      画像を選択する<input type="file" name="upfile" id="upfile" style="display:none">
+                    </span>
+                  </label>
+                  <input type="text" class="form-control form-textPreview" readonly=""　style="display:none;">
+                </div>
+                <br>
+                <div class="">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> アップロード</button>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="result">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+
+    var latitude = 0.0;
+    var longtitude = 0.0;
+
+    $(document).on('change', ':file', function() {
+       var input = $(this),
+       numFiles = input.get(0).files ? input.get(0).files.length : 1,
+       label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+       input.parent().parent().next(':text').val(label);
+   });
+
+    $(document).ready(function() {
+      $('#form').submit(function() {
+        if (!$('#upfile').val()) {
+            alert('編集したい画像ファイルを選択して下さい。');
+            return false;
+        } else {
+          event.preventDefault();
+          var $form = $(this);
+
+          var file = $('#upfile')[0].files[0];
+          // readerのresultプロパティに、データURLとしてエンコードされたファイルデータを格納
+          var reader = new FileReader();
+          reader.readAsDataURL(file);
+
+          reader.onloadend=function(){
+            if (navigator.geolocation) {
+                // 現在の位置情報取得を実施
+                navigator.geolocation.getCurrentPosition(
+                // 位置情報取得成功時
+                function success(pos) { 
+                        latitude =  pos.coords.latitude;
+                        longtitude = pos.coords.longtitude;
+                        $.ajax({
+                          url: 'http://localhost:8000/cgi-bin/response.cgi',
+                          type: 'post',
+                          dataType: 'text',
+                          data: {"text": reader.result,
+                                 "filepath" : "upload.png",
+                                 "latitude" : latitude,
+                                 "longtitude" : longtitude},
+                        })
+                        .done(function(response) {
+                            $('#result').html(response);
+                            window.location.href = 'sample2.html';
+                        })
+                       .fail(function() {
+                         $('#result').html('Failed.');
+                        });
+                },
+                // 位置情報取得失敗時
+                function error(err) { 
+                        latitude = 35.0;
+                        longtitude = 135.0;
+                        $.ajax({
+                          url: 'http://localhost:8000/cgi-bin/response.cgi',
+                          type: 'post',
+                          dataType: 'text',
+                          data: {"text": reader.result,
+                                 "filepath" : "upload.png",
+                                 "latitude" : latitude,
+                                 "longtitude" : longtitude},
+                        })
+                        .done(function(response) {
+                            $('#result').html(response);
+                            window.location.href = 'sample2.html';
+                        })
+                       .fail(function() {
+                         $('#result').html('Failed.');
+                        });
+                });
+                console.log(latitude);
+            } else {
+                window.alert("本ブラウザではGeolocationが使えません");
+            }
+            latitude = 5.0;
+         }
+        }
+      });
+    });
+    </script>
+  </body>
+</html>
