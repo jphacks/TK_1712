@@ -1,6 +1,6 @@
 # Look Book
 
-[![Look Book](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://youtu.be/VOTFlHzpG4Q)
+[![Look Book](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://youtu.be/ty6sV5TM5cs)
 
 ## 製品概要
 本の内容から関連する書籍を探し推薦するWEBアプリケーション
