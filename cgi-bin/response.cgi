@@ -23,8 +23,8 @@ print(latitude)
 print(longtitude)
 sequence_list = []
 
-keywords = ["harry", "potter"]
-#keywords = getkeywords.make_keywords_from_photo()
+# keywords = ["harry", "potter"]
+keywords = getkeywords.make_keywords_from_photo()
 
 with open('json/keywords.json', 'w') as f:
     f.write(json.dumps(keywords, ensure_ascii=False, indent=4))

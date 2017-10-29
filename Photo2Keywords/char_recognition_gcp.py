@@ -84,5 +84,5 @@ def sentence_recog(image_path):
 def make_keywords_from_photo():
     path = ['../Photo2Keywords/photos/python_data_analysis_camera.jpeg']
     sentence = sentence_recog(path)
-    keywords_list = kg.make_keywords(sentence)
+    keywords_list = kg.yapiGetKey(sentence)
     return keywords_list

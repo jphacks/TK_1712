@@ -60,6 +60,7 @@ class searchBook:
 
         # 商品名,商品説明,76×76サイズの画像URL,商品URLのmapを返す
         totalResultsReturned = 5 #data['ResultSet']['totalResultsReturned']
+
         retData = []
         for i in range(int(totalResultsReturned)):
             tmp = {}
