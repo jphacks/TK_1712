@@ -2,10 +2,6 @@
 
 [![Product Name](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://www.youtube.com/channel/UC4PtjOfZTbVp9DwtJv82Lzg)
 
-
-このページで画像をアップロードすると...
-![Product Name](FirstPage.png)
-
 ## 製品概要
 本の内容から関連する書籍を探し推薦するWEBアプリケーション
 ### Book X Tech
@@ -30,6 +26,9 @@
 
 最終的に関連本に対して、Yahoo shoppingのサイトとその本を借りることができる、現在地から割り出された近くの図書館が表示されます。
 
+具体的には、
+![Product Name](FirstPage.png)
+このページで画像をアップロードすると...
 
 ### 特長
 #### 1. 特長1
